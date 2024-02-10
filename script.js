@@ -24,17 +24,20 @@ function displayCountries(countries) {
     const visibleCountries = countries.slice(startIndex, endIndex);
 
     visibleCountries.forEach(country => {
-        const card = `<div class="country-div" data-country="${JSON.stringify(country)}">
-            <img src="${country.flags.png}" alt="Flag">
-            <h2>${country.name.common}</h2>
-            <hr>
-            <p>Population: ${country.population}</p>
-            <p>Region: ${country.region}</p>
-            <p>Capital: ${country.capital.join(', ')}</p>
-            <button class="details-btn">Details</button>
-        </div>`;
+        const card = $('<div class="country-div">')
+            .data('country', country) // Use jQuery's data method to store JSON data
+            .append(`<img src="${country.flags.png}" alt="Flag">`)
+            .append(`<h2>${country.name.common}</h2>`)
+            .append(`<hr>`)
+            .append(`<p>Population: ${country.population}</p>`)
+            .append(`<p>Region: ${country.region}</p>`)
+            .append(`<p>Capital: ${country.capital.join(', ')}</p>`)
+            .append(`<button class="details-btn">Details</button>`);
+    
         cardList.append(card);
     });
+    
+    
 
     // Update pagination information
     const totalPages = Math.ceil(countries.length / 25);
@@ -75,9 +78,10 @@ function addEventListeners() {
 
     // Modal functionality
     $('.country-div').click(function() {
-        const countryData = JSON.parse($(this).attr('data-country'));
+        const countryData = $(this).data('country');
         displayModal(countryData);
     });
+    
 
     // Close modal
     $('.close').click(function() {
