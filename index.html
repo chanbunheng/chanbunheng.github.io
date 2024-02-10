@@ -1,0 +1,52 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countries Catalog</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div class="centered-container">
+        <div id="search-sort">
+            <br>
+            <input class="search-input" type="text" id="searchInput" placeholder="Search by Country Name">
+            <button id="searchBtn">Search</button>
+            <br>
+            <br>
+            <label for="sort">Sort by:</label>
+            <select id="sort">
+                <option value="asc">Ascending</option>
+                <option value="desc">Descending</option>
+            </select>
+            <button id="sortBtn">Sort</button>
+        </div>
+        <div id="pagination">
+            <button id="prevBtn">Previous</button>
+            <span id="currentPage">Page 1</span>
+            <button id="nextBtn">Next</button>
+        </div>
+    </div>
+    <div id="catalog" class="card-list">
+        <!-- Cards will be populated using JavaScript -->
+    </div>
+    <!-- Modal for additional country information -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="modalContent"></div>
+        </div>
+    </div>
+    <div id="detailsModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="detailsModalClose">&times;</span>
+            <div id="detailsModalContent"></div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-paginationjs/3.1.0/pagination.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
